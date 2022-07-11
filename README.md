@@ -30,4 +30,4 @@ The information of the product is loaded dynamically with a JSON file, which can
 
 ### Links
 
-- Live Site URL: [Github Pages](https://your-live-site-url.com)
+- Live Site URL: [Github Pages](https://cvenencia.github.io/ecommerce-product-page-main)
