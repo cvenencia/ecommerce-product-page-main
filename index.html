@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-nav-wrapper">
+      <img id="icon-menu" src="images/icon-menu.svg" alt="Menu toggle" class="icon hide" onclick="openNavMenu();">
+      <a href="#"><img src="images/logo.svg" alt="Page logo"></a>
+      <nav id="nav">
+        <img id="close-menu-icon" src="images/icon-close.svg" alt="Close Menu icon" class="icon close-icon hide" onclick="closeNavMenu();">
+        <ul class="nav-list">
+          <li>
+            <a class="transition" href="#">Collections</a>
+          </li>
+          <li>
+            <a class="transition" href="#">Men</a>
+          </li>
+          <li>
+            <a class="transition" href="#">Women</a>
+          </li>
+          <li>
+            <a class="transition" href="#">About</a>
+          </li>
+          <li>
+            <a class="transition" href="#">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="header-icons-wrapper">
+      <div id="cart-icon-wrapper" class="cart-icon-wrapper" item-amount="2">
+        <button onclick="toggleCart();">
+          <img src="images/icon-cart.svg" alt="Cart icon" id="cart-icon" class="icon transition">
+        </button>
+        <div id="cart-container" class="cart-container rounded-border hide">
+          <div>
+            <h3 class="dark-text">Cart</h3>
+          </div>
+          <div id="cart-products-wrapper"></div>
+          <button id="checkout-btn" class="btn-orange checkout-btn rounded-border transition" onclick="buyCart()">Checkout</button>
+        </div>
+      </div>
+      <img src="images/image-avatar.png" alt="Profile picture" class="icon profile-icon transition">
+    </div>
+  </header>
+
+  <main>
+    <div id="images-container" class="images-container">
+      <div class="full-img-wrapper">
+        <div class="img-wrapper">
+          <button id="btn-image-selector-left" onclick="moveImage(-1);" class="icon btn-image-selector img-selector-main mobile-selector-left hide"><img src="images/icon-previous.svg" alt="Previous image icon"></button>
+          <img onclick="expandImage();" id="current-img" src="images/image-product-1.jpg" alt="Selected product image" class="current-img rounded-border">
+          <button id="btn-image-selector-right" onclick="moveImage(1);" class="icon btn-image-selector img-selector-main mobile-selector-right hide"><img src="images/icon-next.svg" alt="Next image icon"></button>
+        </div>
+        <div class="img-wrapper hide"><img id="next-img" src="images/image-product-2.jpg" alt="Next product image" class="rounded-border"></div>
+      </div>
+    </div>
+    <div class="product-description-container">
+      <h4 id="category"></h4>
+      <h1 id="title"></h1>
+      <p id="description"></p>
+      <div class="price-wrapper">
+        <div><strong><span id="final-price"></span></strong><strong><span id="discount" class="rounded-border"></span></strong></div>
+        <div><strong><span id="previous-price"></span></strong></div>
+      </div>
+      <div class="cart-functionality">
+        <div class="amount-selector rounded-border">
+          <button onclick="decrementAmount();"><img src="images/icon-minus.svg" alt="Decrease amount to add to cart"></button>
+          <span id="amount">0</span>
+          <button onclick="incrementAmount();"><img src="images/icon-plus.svg" alt="Increase amount to add to cart"></button>
+        </div>
+        <button onclick="addToCart();" class="btn-orange btn-add-cart rounded-border">
+          <img src="images/icon-cart.svg" alt="">
+          <span>Add to cart</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <div id="expanded-image-container" class="expanded-image-container transition hide">
+    <button onclick="hideExpandedImage();" class="icon"><img class="close-icon" src="images/icon-close.svg" alt="Close icon"></button>
+    <div class="expanded-img-wrapper">
+      <button onclick="moveExpandedImage(-1);" class="icon btn-image-selector btn-expanded-selector centered-left"><img src="images/icon-previous.svg" alt="Previous image icon"></button>
+      <img id="expanded-image" src="images/image-product-1.jpg" alt="Product image">
+      <button onclick="moveExpandedImage(1);" class="icon btn-image-selector btn-expanded-selector centered-right"><img src="images/icon-next.svg" alt="Next image icon"></button>
+    </div>
+  </div>
+  <div id="bg-cover" class="bg-cover transition hide" onclick="hideEverything();"></div>
+
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="https://github.com/cvenencia">Carlos Venencia</a>.
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>
