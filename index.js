@@ -122,24 +122,22 @@ function selectExpandedImageProduct(index) {
 }
 
 function moveImage(amount) {
-  expandedIndex += amount;
-  index += amount;
-
-  const lastIndex = product.images.length;
-  if (index < 0) index = lastIndex - 1;
-  if (index >= lastIndex) index = 0;
+  expandedIndex = truncateIndex(expandedIndex += amount);
+  index = truncateIndex(index += amount);
 
   updateCarousel();
 }
 
 function moveExpandedImage(amount) {
-  expandedIndex += amount;
-
-  const lastIndex = product.images.length;
-  if (expandedIndex < 0) expandedIndex = lastIndex - 1;
-  if (expandedIndex >= lastIndex) expandedIndex = 0;
-
+  expandedIndex = truncateIndex(expandedIndex += amount);
   updateExpandedImage();
+}
+
+function truncateIndex(index) {
+  const lastIndex = product.images.length;
+  if (index < 0) return lastIndex - 1;
+  else if (index >= lastIndex) return 0; 
+  else return index;
 }
 
 function checkOverflowCarousel() {
